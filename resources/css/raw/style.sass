@@ -1,0 +1,543 @@
+@import 'reset'
+@import '../../fonts/Roboto/Roboto'
+@import '../../fonts/OpenSans/OpenSans'
+@import 'animations'
+// @import '../../lib/font-awesome/scss/font-awesome'
+
+$mobile: 720px
+$desktop: 721px
+
+=newImageObject($url, $width, $height, $clickable)
+	@if $clickable
+		cursor: pointer
+	
+	background: url(#{$url}) no-repeat
+	background-position: center center
+	background-size: 100%
+	width: #{$width}
+	height: #{$height}
+
+	border: 0
+
+=newInlineImageObject($url, $width, $height, $clickable)
+	@if $clickable
+		cursor: pointer
+
+	display: inline-block // uncomment this and break image alignment!
+	
+	background: url(#{$url}) no-repeat
+	background-position: center center
+	background-size: 100%
+	width: #{$width}
+	height: #{$height}
+
+	border: 0
+
+=newIconImageObject($url, $width, $height, $clickable)
+	@if $clickable
+		cursor: pointer
+
+	@media (max-width: $mobile)
+		width: 10vw
+		height: 10vw
+
+	display: inline-block // uncomment this and break image alignment!
+	
+	background: url(#{$url}) no-repeat
+	background-position: center center
+	background-size: 100%
+	width: #{$width}
+	height: #{$height}
+
+	border: 0
+
+*
+	-webkit-image-drag: none
+	user-select: none
+	-webkit-tap-highlight-color: rgba(0,0,0,0)
+	-webkit-tap-highlight-color: transparent
+
+.noOpacity
+	opacity: 0
+
+.hidden
+	display: none
+	opacity: 0
+
+::-webkit-scrollbar
+	width: 15px !important
+
+::-webkit-scrollbar-track 
+	background-color: white !important
+
+::-webkit-scrollbar-thumb, ::-webkit-scrollbar-corner, ::-webkit-scrollbar-button
+	background-color: #B5B5B5 !important
+	
+	&:hover
+		background-color: #262626
+
+html
+	background-color: white
+
+	body 
+		margin: 0
+		background-color: white
+
+		nav.navbar
+			position: fixed
+
+			padding-right: 2.5%
+			padding-left: 2.5%
+			padding-top: 2.5%
+			padding-bottom: 2.5%
+
+			width: 95%
+			font-size: 20px
+
+			background-color: transparent
+			opacity: 0.6
+
+			transition: opacity 0.25s ease-in-out, background-color 0.25s ease-in-out, font-size 0.25s ease-in-out, padding 0.25s ease-in-out
+
+			&:hover
+				opacity: 1
+				background-color: rgba(0,0,0,0.8)
+			
+			&:hover.out
+				font-size: 20px
+				background-color: rgba(0,0,0,1)
+
+			&.top
+				opacity: 0.7
+				background-color: rgba(22,23,24,0.1)
+
+			&.out
+				padding-right: 2.5%
+				padding-left: 2.5%
+				padding-top: 2%
+				padding-bottom: 2%
+
+				z-index: 2
+				font-size: 17.5px
+				background-color: rgba(0,0,0,1)
+
+			a 
+				color: white
+
+			a.first-item
+				display: inline
+
+				li
+					font-weight: 100
+					display: inline
+
+			ul.other-items
+				list-style-type: none
+				padding-left: 0px
+				float: right
+				margin: 0
+				display: inline
+				
+				@media (max-width: $mobile)
+					right: 2.5%
+					position: absolute
+
+				a
+					&:not(:first-child)
+						padding-left: 10px
+
+					li
+						font-weight: 100
+						display: inline
+
+		content
+			section.awesome-background
+				padding-right: 5%
+				padding-left: 5%
+
+				background-image: url(/resources/img/backgrounds/mac-overhead-compat.png)
+
+				height: 90vh
+
+				background-attachment: scroll
+				background-position: center center
+				background-size: cover
+
+				@media (min-width: $desktop) 
+					box-shadow: inset 0 0 1em #111
+
+				h1
+					color: white
+					font-size: 2.5em
+					font-weight: 100
+
+					text-align: center
+					margin: 0 auto
+					
+					padding-top: 15vh
+
+			section.whoami
+				padding-right: 5vw
+				padding-left: 5vw
+				padding-top: 15px
+				padding-bottom: 15px
+
+				section.picture
+					padding-top: 10px
+					padding-bottom: 10px
+
+					transition: padding 0.5s, border 0.5s, display 0s
+					
+					@media (min-width: $desktop)
+						display: inline-block
+						padding-right: 30px
+						border-right: 1px solid tomato
+						vertical-align: top
+
+					@media (max-width: $mobile)
+						* 
+							margin: 0 auto
+							text-align: center
+
+					div.avatar
+						+newImageObject('/resources/img/avatars/edwin.png', '20vh', '20vh', false)
+						border-radius: 50%
+
+					h2.name 
+						font-weight: 100
+
+					h5.metadata
+						color: #3F3F3F
+
+					section.s
+						overflow: visible
+
+						a
+							div.facebook
+								+newIconImageObject('/resources/img/s/fbk.png', 3vw, 3vw, true)
+							
+							div.instagram
+								+newIconImageObject('/resources/img/s/ig.png', 3vw, 3vw, true)
+
+							div.twitter
+								+newIconImageObject('/resources/img/s/tw.png', 3vw, 3vw, true)
+
+							div.github
+								+newIconImageObject('/resources/img/s/gh.png', 3vw, 3vw, true)
+
+							div.mail
+								+newIconImageObject('/resources/img/s/mail.png', 3vw, 3vw, true)
+								background-size: 90%
+
+				section.freespace
+					@media (min-width: $desktop)
+						padding-left: 20px
+						display: inline-block
+						vertical-align: top
+
+					@media (max-width: $mobile)
+						* 
+							display: block
+							margin: 0 auto
+							text-align: center
+
+				section.whoonearth
+					padding-top: 10px
+					padding-bottom: 10px
+
+					@media (min-width: $desktop)
+						//padding-left: 20px
+						display: inline-block
+						//vertical-align: top
+
+					@media (max-width: $mobile)
+						* 
+							display: block
+							margin: 0 auto
+							text-align: center
+
+					h2
+						font-weight: 100
+						color: #7F7F7F
+
+						transition: color 0.25s
+
+						&.appeared
+							color: black
+
+					a.moreaboutme-toggle
+						color: #1de9b6
+
+					section.moreaboutme
+						@extend .hidden
+
+						a, span.tomato
+							color: #ff6437 // hooray, it's fucking tomato
+							display: inline
+
+			section.sea-background
+				padding-right: 5%
+				padding-left: 5%
+
+				background-image: url(/resources/img/backgrounds/sea-landscape.png);
+
+				height: 70vh
+
+				background-attachment: scroll
+				background-position: center center
+				background-size: cover
+
+				@media (min-width: $desktop) 
+					box-shadow: inset 0 0 1em #111
+
+				h1
+					color: black
+					font-size: 2.5em
+					font-weight: 100
+
+					text-align: center
+					margin: 0 auto
+					
+					padding-top: 10vh
+
+			section.whathedoes
+				padding-right: 5vw
+				padding-left: 5vw
+				padding-top: 15px
+				padding-bottom: 15px
+
+				section.short
+					@media (min-width: $desktop)
+						width: 30vw
+						padding-right: 5vw
+						display: inline-block
+						vertical-align: top
+
+					@media (max-width: $mobile)
+						text-align: center 
+
+						* 
+							display: block
+							margin: 0 auto
+							text-align: center 
+
+					span.power
+						line-height: 125%
+						font-size: 2.5em
+						font-weight: 100
+						color: #BFBFBF
+
+					*
+						vertical-align: middle
+
+				section.self-rating
+					@media (min-width: $desktop)
+						width: 50vw
+						display: inline-block
+						vertical-align: top
+
+					@media (max-width: $mobile)
+						* 
+							display: block
+							margin: 0 auto
+							text-align: center 
+
+
+					section.programmingLanguage
+						width: 33.333%
+						display: inline-block
+						margin: 0 auto
+						padding-bottom: 30px
+
+						h4
+							vertical-align: top
+							text-align: center
+
+						section.wrapper
+							@import 'progress'
+							overflow: visible
+
+							div, div div.slice
+								overflow: visible
+
+			section.projects
+				padding-right: 5vw
+				padding-left: 5vw
+				padding-top: 15px
+				padding-bottom: 15px
+
+				section.header
+					@media (min-width: $desktop)
+						width: 20vw
+						padding-right: 5vw
+						display: inline-block
+						vertical-align: top
+
+					@media (max-width: $mobile)
+						text-align: center 
+
+						* 
+							display: block
+							margin: 0 auto
+							text-align: center 
+
+					h4
+						line-height: 125%
+						font-size: 2.5em
+						font-weight: 100
+						color: #BFBFBF
+
+				section.contribution
+					@media (min-width: $desktop)
+						width: 60vw
+						display: inline-block
+						vertical-align: top
+
+					@media (max-width: $mobile)
+						text-align: center 
+						* 
+							display: block
+							margin: 0 auto
+							text-align: center 
+
+					h2
+						a
+							color: #ff6437
+
+					dd 
+						padding-bottom: 20px
+						display: block
+
+					p 
+						color: #00bfa5
+
+			section.competitions
+				padding-right: 5vw
+				padding-left: 5vw
+				padding-top: 15px
+				padding-bottom: 15px
+
+				section.header
+					@media (min-width: $desktop)
+						width: 20vw
+						padding-right: 5vw
+						display: inline-block
+						vertical-align: top
+
+					@media (max-width: $mobile)
+						text-align: center 
+
+						* 
+							display: block
+							margin: 0 auto
+							text-align: center 
+
+					h4
+						line-height: 125%
+						font-size: 2.5em
+						font-weight: 100
+						color: #BFBFBF
+
+				section.ranks
+					@media (min-width: $desktop)
+						width: 60vw
+						display: inline-block
+						vertical-align: top
+
+					@media (max-width: $mobile)
+						text-align: center 
+						* 
+							display: block
+							margin: 0 auto
+							text-align: center 
+
+					h4
+						line-height: 125%
+						font-size: 2.5em
+						font-weight: 100
+						color: #BFBFBF
+
+					p
+						color: black
+						font-size: 1.25em
+						padding: 0px 0px 20px 0px
+
+						* 
+							vertical-align: middle
+
+						a
+							color: #ff6437
+
+						span.organizer::before
+							content: ' '
+
+						span.position
+							color: #00bfa5
+							float: right
+							display: block
+
+							span.date
+								margin: 0px 10px 0px 10px
+								padding: 5px 5px
+								border-radius: 3px
+								border: 1px solid #BFBFBF
+								font-size: 0.75em
+								display: inline-block
+
+			section.moretocome-background
+				padding-right: 5%
+				padding-left: 5%
+
+				background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/resources/img/backgrounds/more-to-come.png)
+
+				background-attachment: scroll
+				background-position: center center
+				background-size: cover
+
+				box-shadow: inset 0 0 1em #111
+
+				height: 90vh
+
+				*
+					color: white
+					text-align: center
+					margin: 0 auto
+					font-weight: 100
+
+				h4
+					padding-top: 20vh
+					font-size: 4em
+
+				p 
+					font-size: 2em
+
+			section.endofpage
+				padding-right: 5vw
+				padding-left: 5vw
+				padding-top: 15px
+				padding-bottom: 15px
+
+				width: 90vw
+				
+				@media (min-width: $desktop)
+					display: inline-block
+					vertical-align: top
+					
+					a
+						float: right
+
+				@media (max-width: $mobile)
+					text-align: center 
+
+					* 
+						display: block
+						margin: 0 auto
+						text-align: center 
+				*
+					vertical-align: middle
+				
+				h4, a
+					line-height: 125%
+					font-size: 1em
+					font-weight: 300
+					color: #797979

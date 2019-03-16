@@ -1,0 +1,46 @@
+			section.blog
+				padding-right: 5%
+				padding-left: 5%
+
+				background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/resources/img/blog-intro-pattern.jpg);
+
+				animation-name: blog-fadein-fadeout
+				animation-duration: 1s
+
+				height: 40vh
+
+				background-attachment: fixed
+				background-position: center center
+				background-size: contain
+
+				box-shadow: inset 0 0 1em #111
+
+				*
+					color: white
+					text-align: center
+					margin: 0 auto
+					font-weight: 100
+
+				h4
+					font-size: 4em
+
+				p 
+					font-size: 2em
+
+				a
+					display: block
+					color: white
+					padding: 15px 10px
+					border: 5px solid white
+
+					@media (max-width: $mobile) 
+						min-width: 60%
+					
+					@media (min-width: $desktop) 
+						width: 70vw
+
+					transition: background-color 0.25s, color 0.25s
+
+					&:hover
+						color: black
+						background-color: white
